@@ -11,13 +11,11 @@ then
 fi
 
 echo "finding appropriate size"
-for var in `seq 1 100`
+for var in `seq 1 50`
 do
 	echo $var
-	convert $IMG -resize ${var}% $TMP_IMG
+	convert $IMG -resize ${var}% -background black -vignette 50x5000 -normalize $TMP_IMG
 	python lib/stl_tools_helper.py  output.0.028.stl 0.028
-
-	ls -lh *stl
 
 	size=`ls -l output.0.028.stl | awk '{print $5}'`
 	if [ $size -gt 4000000 ]
