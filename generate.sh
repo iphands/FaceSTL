@@ -10,12 +10,12 @@ then
 	exit
 fi
 
-for var in `seq 10 11`
+for var in `seq 10 100`
 do
 	echo $var
 	convert $IMG -resize ${var}% $TMP_IMG
 	python lib/stl_tools_helper.py
-	size=`ls -l $TMP_IMG | awk '{print $5}'`
+	size=`ls -l output.stl | awk '{print $5}'`
 	if [ $size -gt 4000000 ]
 	then
 		break
