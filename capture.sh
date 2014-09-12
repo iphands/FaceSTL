@@ -27,8 +27,15 @@ do
 	convert /tmp/out*jpg -evaluate-sequence mean $IMG
 	convert -fill red -draw "point 0,0" $IMG -negate -resize ${var}% -background black -normalize $TMP_IMG
 
+	echo "generating STL"
 	python lib/stl_tools_helper.py examples/${name}.stl 0.08 .8
+
+	echo "simplifying STL"
+	meshlabserver -i examples/${name}.stl -o examples/${name}.stl -s simplify.mlx
+
+	echo "view!"
 	python ~/printer/tatlin/tatlin.py examples/${name}.stl
+
 
 	# size=`ls -l output.stl | awk '{print $5}'`
 	# if [ $size -gt 4000000 ]
