@@ -3,12 +3,6 @@
 IMG=$1
 TMP_IMG=".tmp.img.png"
 
-if [ "$IMG" == "" ]
-then
-	echo "Error: image file needed"
-	echo "Usage: $0 path_to_image_file"
-#	exit
-fi
 
 rm output*stl 2>/dev/null
 rm -rf /tmp/out*jpg 2>/dev/null
