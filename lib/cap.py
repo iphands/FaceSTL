@@ -15,13 +15,12 @@ def get_depth():
 def get_video():
     return frame_convert.video_cv(freenect.sync_get_video()[0])
 
-
 #freenect(sync_set_range_mode, FREENECT_RANGE_NEAR_MODE)
 while(1):
     cv.ShowImage('Depth', get_depth())
     #cv.ShowImage('Video', get_video())
     if cv.WaitKey(10) != -1:
-        for i in range(101):
+        for i in range(25):
             print "Capturing image " + str(i) + "% complete"
             cv.SaveImage('/tmp/out' + str(i) + '.jpg', get_depth())
         break
