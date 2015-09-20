@@ -41,6 +41,7 @@ echo "All good y/n"
 read confirm
 if [ "$confirm" == "y" ]
 then
+	git add examples/*stl
 	git commit -am "adding scan"
 	git push
 fi
