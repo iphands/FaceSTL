@@ -37,11 +37,13 @@ meshlabserver -i examples/${name}.stl -o examples/${name}.stl -s simplify.mlx
 echo "view!"
 python ~/printer/tatlin/tatlin.py examples/${name}.stl
 
-echo "All good y/n"
+echo -e "\n\n\n\nAll good y/n"
 read confirm
 if [ "$confirm" == "y" ]
 then
 	git add examples/*stl
 	git commit -am "adding scan"
 	git push
+else
+	rm examples/${name}.stl
 fi
